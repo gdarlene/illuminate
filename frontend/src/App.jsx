@@ -1,34 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [transcription, setTranscription] = useState("")
+  const [responseAi,setResponseAi]=useState("")
+  
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='contents'>
+      <div className='navbar min-h-screen flex flex-col bg-slate-50 text-gray-900'>
+        <div className='logo'>
+          <h1 className='brandName'>Illuminate</h1>
+          <p className='moto'>Be My Sight and Help me Digitally!</p>
+        </div>
+        <div className='menu'>
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contacts</li>
+            <li>Intergrated Apps</li>
+          </ul>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <main className='flex flex-1'>
+
+        <section className='w-1/2 p4 border-r bg-white facebook'>
+        <span className='facebookLogo'>
+          <img src="/facebook.png" alt="facebook logo" className='w-8 h-8'/>
+        </span>
+        <span className='menuItems'>
+          <ul>
+            <li className="icons"><link rel="stylesheet" href="#"/><abbr title="menu"><img src="/menu.png" alt="menu" className='w-8 h-8' /></abbr></li>
+            <li className="icons"><link rel="stylesheet" href="#"/><abbr title="menu"><img src="/messenger.png" alt="menu" className='w-8 h-8' /></abbr></li>
+            <li className="icons"><link rel="stylesheet" href="#"/><abbr title="menu"><img src="/notifications.png" alt="menu" className='w-8 h-8' /></abbr></li>
+            <li className="icons"><link rel="stylesheet" href="#"/><abbr title="menu"><img src="/user.png" alt="menu" className='w-8 h-8' /></abbr></li>
+          </ul>
+        </span>
+        </section>
+      </main>
+    </div>
   )
 }
 
