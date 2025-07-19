@@ -1,0 +1,31 @@
+body {
+     width: 300px;
+     padding: 10px;
+     font-family: Arial, sans-serif;
+     background: #F5F6F5;
+     color: #000000;
+   }
+   h1 {
+     font-size: 20px;
+     color: #1A2526;
+   }
+   p {
+     font-size: 14px;
+     color: #333333;
+   }
+   button {
+     background: #FFC107;
+     color: #000000;
+     padding: 8px;
+     margin: 5px 0;
+     border: none;
+     cursor: pointer;
+     font-size: 14px;
+   }
+   button:hover {
+     background: #E0A800;
+   }
+   #status {
+     font-size: 12px;
+     color: #1A2526;
+   }

@@ -9,7 +9,7 @@
 ],
 "content_scripts": [
 {
-"matches": ["https://www.instagram.com/"],
+"matches": ["https://www.instagram.com/","https://www.facebook.com/","https://www.linkedin.com/"],
 "js": ["content.js"],
 "run_at": "document_idle"
 }
@@ -18,6 +18,7 @@
 "128": "icons/icon128.png"
 },
 "action": {
+"default_popup":"popup.html",
 "default_title": "Illuminate"
 }
 }
