@@ -1,3 +1,10 @@
+// Listen for site detection from content.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "siteDetected") {
+        document.getElementById("status").textContent = `Detected: ${message.site}`;
+        speak(`Illuminate is ready on ${message.site}. Click a button to start.`);
+    }
+});
 // toggling high contrast for clearly viewing the app
    document.getElementById("contrast").addEventListener("click", () => {
      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -8,31 +15,35 @@
    });
 
    //basic voice step by step navigation using chrome's inbuilt browser speeche recognisseVoice: webkitSpeechRecognition
+document.getElementById("voiceNavigation").addEventListener("click", () => {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        document.getElementById("status").textContent = "Microphone not supported.";
+        speak("Microphone not supported on this device.");
+        return;
+    }
+    const recogniseVoice = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recogniseVoice.lang = "en-US";
+    recogniseVoice.start();
+    document.getElementById("status").textContent = "Listening for navigation command...";
 
-   document.getElementById("voiceNavigation").addEventListener("click", () => {
-     const recogniseVoice = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-     recogniseVoice.lang = "en-US";
-     recogniseVoice.start();
-     document.getElementById("status").textContent = "Listening for speech to navigate User interface...";
+    recogniseVoice.onresult = (event) => {
+        const command = event.results[0][0].transcript.toLowerCase();
+        document.getElementById("status").textContent = `Heard: ${command}`;
+        
+        if (command.includes("profile")) {
+            speak("Navigating to profile. Step 1: Find the profile icon at the bottom right. Step 2: Click to open your profile.");
+        } else if (command.includes("post")) {
+            speak("Creating a post. Step 1: Find the plus icon in the center. Step 2: Click to start a new post.");
+        } else {
+            speak("Command not recognized. Try saying 'navigate to profile' or 'create post'.");
+        }
+    };
 
-     recogniseVoice.onresult = (event) => {
-       const command = event.results[0][0].transcript.toLowerCase();
-       document.getElementById("status").textContent = `Heard: ${command}`;
-       
-       if (command.includes("profile")) {
-         speak("Navigating to profile. Step 1: Find the profile icon at the bottom in the left panel. Step 2: Click to open your profile.");
-       } else if (command.includes("post")) {
-         speak("Creating a post. Step 1: Find the plus icon in the center. Step 2: Click to start a new post.");
-       } else {
-         speak("Command not recognized. Try saying 'navigate to profile' or 'create post'.");
-       }
-     };
-
-     recogniseVoice.onerror = () => {
-       document.getElementById("status").textContent = "Failed to listen to voice clearly. Try again.";
-       speak("Failed to listen to voice clearly. Please try again.");
-     };
-   });
+    recogniseVoice.onerror = (event) => {
+        document.getElementById("status").textContent = "Voice recognition error. Ensure microphone permissions are granted.";
+        speak("Voice recognition error. Please check microphone permissions and try again.");
+    };
+});
 
    // Helping the visually impaired person to make a resume
    document.getElementById("resumeGeneration").addEventListener("click", () => {
