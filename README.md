@@ -31,3 +31,16 @@ Ai based assistance tool for visually impaired individuals helping in navigating
 3. **Test on Supported Sites**:
    - Visit [instagram.com](https://www.instagram.com), [facebook.com](https://www.facebook.com), or [linkedin.com](https://www.linkedin.com).
    - Click the extension icon (puzzle piece) and pin "Illuminate" to open the popup.
+
+# Test the Extension:
+**Visit:**
+- linkedin.com or
+-  instagram.com or
+- facebook.com
+
+Click the extension icon (puzzle piece), pin "Illuminate," and open the popup.
+Use buttons to:
+- Voice Navigation: Say "navigate to profile" or "create post".
+- Resume Summary: Say "I’m a developer" or "I’m a marketer".
+- Schedule Post/Apply: Say "schedule post tomorrow" or "apply for job".
+High-Contrast Mode: Toggle for enhanced visibility.
