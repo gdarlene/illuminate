@@ -51,7 +51,7 @@
        } else if (input.includes("designer")) {
          summary = "Creative designer with experience in UI/UX seeking design opportunities.";
        }
-       else if (input.includes("java"||"spring boot")) {
+       else if (input.includes("java")) {
          summary = "Creative designer with experience in Java seeking jave development opportunities, And is capable to develop your springboot applications";
        }
        
